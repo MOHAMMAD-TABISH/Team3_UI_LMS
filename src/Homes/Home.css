@@ -1,0 +1,24 @@
+.btn_get_start{
+    background-color: #8ed82c;
+    color: rgb(190, 33, 33);
+    border-radius: 12px;
+}
+.btn_get_hov:hover{
+    background-color: rgb(23, 128, 128);
+    color: white;
+    border-radius: 12px;
+}
+.col-md-6 pt-5 pt-lg-0 order-2 order-lg-1{
+    background-color: hotpink;
+}
+.btn_get_start btn_get_hov{
+ padding-top: 2000px;
+ background: rgb(189, 56, 56);
+ background-color: blueviolet;
+}
+.abc{
+    background-color: rgb(148, 96, 196);
+}
+.mt3{
+    padding-top: 100px;
+}
