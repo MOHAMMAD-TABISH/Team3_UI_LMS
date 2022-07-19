@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-export default class Login extends Component {
+export default class Admin_Login extends Component {
     constructor(){
         super();
         this.state={
@@ -8,63 +8,44 @@ export default class Login extends Component {
             Emp_Email:'',
             Password:''
           }
-          this.Login= this.Login.bind(this);
+          this.Admin_Login= this.Admin_Login.bind(this);
           this.handleChange=this.handleChange.bind(this);
     }
-
-    // handleValidation = () => {
-    //   const {
-    //      Emp_Email,Password
-    //   } = this.state;
-    //   let error = '';
-    //   let formIsValid = true;
-    //       if(!Emp_Email || 
-    //           !Password 
-    //           ){
-    //           formIsValid = false;
-    //           error = "Input fields cannot be empty";
-              
-//     //       } 
-// this.setState({error: error});
-// return formIsValid;
-// }
     handleChange(e){
-      this.setState(e);
-      // e.preventDefault();
-      // let Emp_Email = this.state.Emp_Email;
-      //   let Password = this.state.Password;
-        
-      //    if (Emp_Email.trim().length == 0 || Password.trim().length == 0) {
-      //    alert("Feild required");
-      //   } else {
-      //     console.log('input value is not empty');
-      //   }
-      
-  }
-    Login(e){
+          this.setState(e);
+    }
+    Admin_Login(e){
         e.preventDefault();
         let Emp_Email = this.state.Emp_Email;
         let Password = this.state.Password;
+        if(Emp_Email=="admin@gmail.com"&&Password=="Admin"){
+            alert("Login Successful");
+            window.location="/Admin_Dashboard"
+        }
+        else{
+            alert("Email or Password Incorrect");
+        }
        
-        fetch("http://localhost:27852/api/Employee_LMS/Login?email="+Emp_Email+"&password="+Password).
-        then(res => res.json()).then(result =>
-            {
-              console.log(result);
-              if(result>0){
-                alert("Valid");
-                window.location="/Dashboard";
-              }
-              else{
-                alert("Enter correct Username/Password");
-              }
-            })
+        // fetch("http://localhost:27852/api/Employee_LMS/Admin_Login?"+Emp_Email+"&"+Password).
+        // then(res => res.json()).then(result =>
+        //     {
+        //       console.log(result);
+              
+        //       if(result>0){
+        //         alert("Valid");
+        //         window.location="/Dashboard";
+        //       }
+        //       else{
+        //         alert("InValid");
+        //       }
+        //     })
         
     }
-    
   render() {
-    return (<>
+    return (
+      <>
       <form>
-        <h3>Sign In</h3>
+        <h3>Admin Login</h3>
         <div className="mb-3">
           <label>Email address</label>
           <input
@@ -96,7 +77,7 @@ export default class Login extends Component {
           </div>
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary"  onClick={this.Login}>
+          <button type="submit" className="btn btn-primary"  onClick={this.Admin_Login}>
             Submit
           </button>
         </div>
@@ -104,8 +85,9 @@ export default class Login extends Component {
           Forgot <a href="#">password?</a>
         </p>
       </form>
-      <Link to={'/'}><button>Back</button></Link>
-      </>
+            <Link to={'/'}><button>Back</button></Link>
+            </>
+
     )
   }
 }

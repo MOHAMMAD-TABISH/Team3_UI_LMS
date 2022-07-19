@@ -41,7 +41,7 @@ body, html, .App, #root, .auth-wrapper {
   transition: all .3s;
 }
 .auth-wrapper .form-control:focus {
-  border-color: #167bff;
+  border-color: #635fdf;
   box-shadow: none;
 }
 .auth-wrapper h3 {

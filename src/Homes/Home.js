@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Navigate } from 'react-router';
 import './Home.css';
+import {Link} from 'react-router-dom'
 
 export default class Home extends Component {
   
@@ -20,9 +21,12 @@ export default class Home extends Component {
               This will help you to apply for leave very easy
             </h7>
             <div className='mt3'>
+              <Link to={'/sign-in'}>
             <button className='abc'>Get Started
             </button>
+            </Link>
             </div>
+            <br/>
             </div>
             <div className='col-lg-6 order-1 order-lg-2 header-img'>
               <img src="https://th.bing.com/th/id/OIP.TfyTn0kKR5bPC_f-HH7X9wHaFI?pid=ImgDet&rs=1" className='img-fluid animated' alt="Home img" />
@@ -38,6 +42,7 @@ export default class Home extends Component {
                 </h7>
             </div>
     </div>
+    
      </section>
      </>
     )

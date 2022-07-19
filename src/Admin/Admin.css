@@ -1,0 +1,11 @@
+.show-all-employee{
+    align-items: center;
+    align-self: center;
+    text-align: center;
+}
+.show-all-employee-table{
+ padding-left: 200px;
+ width: 600px;
+ height: 200px;
+ text-align: center;
+}

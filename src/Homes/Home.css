@@ -12,7 +12,7 @@
     background-color: hotpink;
 }
 .btn_get_start btn_get_hov{
- padding-top: 2000px;
+ padding-top: 150px;
  background: rgb(189, 56, 56);
  background-color: blueviolet;
 }
@@ -20,5 +20,5 @@
     background-color: rgb(148, 96, 196);
 }
 .mt3{
-    padding-top: 100px;
+    padding-top: 50px;
 }
