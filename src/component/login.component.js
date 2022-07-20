@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+const initialState =
+{
+          
+  Employee:[],
+  Emp_Email:'',
+  Password:'',
+  emailError: "",
+  passwordError: ""
+
+}
 export default class Login extends Component {
     constructor(){
         super();
-        this.state={
-            Employee:[],
-            Emp_Email:'',
-            Password:''
-          }
+        this.state =initialState;
           this.Login= this.Login.bind(this);
           this.handleChange=this.handleChange.bind(this);
     }
@@ -41,8 +47,40 @@ export default class Login extends Component {
       //   }
       
   }
+  validate()
+  {
+      if(this.state.Emp_Email==="" &&  this.state.Password==="")
+      {
+          this.setState({emailError:"Enter Email"});
+          this.setState({passwordError:"Enter Password"});
+      }
+      
+      else if(this.state.Emp_Email==="")
+      {
+          this.setState(
+              {
+                  usernameError:"Enter Email"})
+      }
+      else if(this.state.Password==="")
+      {
+          this.setState(
+              {
+                passwordError:"Enter Password"})
+      }
+      else{
+          return true;
+      }
+  
+  }
     Login(e){
         e.preventDefault();
+        this.setState({
+          emailError:"",passwordError:""
+      })
+      //   this.setState({
+      //     emailError:"",passwordError:""
+      // })
+      if(this.validate()){
         let Emp_Email = this.state.Emp_Email;
         let Password = this.state.Password;
        
@@ -53,11 +91,13 @@ export default class Login extends Component {
               if(result>0){
                 alert("Valid");
                 window.location="/Dashboard";
+                sessionStorage.setItem("UserEmail",Emp_Email);
               }
               else{
                 alert("Enter correct Username/Password");
               }
             })
+          }
         
     }
     
@@ -71,8 +111,12 @@ export default class Login extends Component {
             type="email"
             className="form-control"
             placeholder="Enter email"
-            onChange={(e)=>this.setState({Emp_Email:e.target.value})}
+            name="Emp_Email"
+            onChange={(e)=>this.handleChange({Emp_Email:e.target.value})}
           />
+           <p style={{ fontSize: 10, color: "red" }}>
+            {this.state.emailError}
+          </p>
         </div>
         <div className="mb-3">
           <label>Password</label>
@@ -80,8 +124,12 @@ export default class Login extends Component {
             type="password"
             className="form-control"
             placeholder="Enter password"
-            onChange={(e)=>this.setState({Password:e.target.value})}
+            name="Passwword"
+            onChange={(e)=>this.handleChange({Password:e.target.value})}
           />
+          <div style={{ fontSize: 10, color: "red" }}>
+            {this.state.passwordError}
+          </div>
         </div>
         <div className="mb-3">
           <div className="custom-control custom-checkbox">

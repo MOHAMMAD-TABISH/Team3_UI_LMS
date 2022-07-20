@@ -12,6 +12,8 @@ import Showall from './Admin/Showall'
 import Showall_manager from './Admin/Showall_manager'
 import Create_employee from './Admin/Create_employee'
 import Searchbyid from './Emplyee/Searchbyid'
+import Create_manager from './Admin/Create_manager'
+import Apply_leave from './Emplyee/Apply_leave'
 function App() {
   return (
     <Router>
@@ -62,6 +64,8 @@ function App() {
               <Route path ="/Showall_manager" element={<Showall_manager></Showall_manager>}></Route>
               <Route path ="/Create_employee" element={<Create_employee/>}/>
               <Route path="/Searchbyid" element={<Searchbyid/>}></Route>
+              <Route path="/Create_manager" element={<Create_manager/>}></Route>
+              <Route path="/Apply_leave" element={<Apply_leave/>} />
             </Routes>
           </div>
         </div>

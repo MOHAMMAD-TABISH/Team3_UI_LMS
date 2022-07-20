@@ -60,7 +60,8 @@ export default class Admin_Dashboard extends Component {
                              <i class="fa fa-share fa-4x"></i>
                          </div>
                          <h6 class="text-uppercase">Create A Manager</h6><br/>
-                         <button style={{backgroundColor:"lightred"}}>Click me</button>
+                         <Link to={'/Create_manager'}>
+                         <button style={{backgroundColor:"lightred"}}>Click me</button></Link>
                      </div>
                  </div>
              </div>

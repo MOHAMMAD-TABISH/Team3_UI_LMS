@@ -1,0 +1,35 @@
+form{
+    align-self: middle;
+    
+}
+.label{
+    display: inline-block;
+    font-size: larger;
+    color: rgb(23, 83, 161);
+    padding: 10px;
+    font-weight: bold;
+}
+.input{
+    font-size: small;
+    padding: 5px;
+    margin: 5px;
+}
+.btn{
+    background-color: rgb(27, 201, 85);
+    border: cornsilk;
+    color: cornsilk;
+    font-size: medium;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+.drop{
+    margin: 2px;
+    padding: 5px;
+    font-size: medium;
+}
+.head{
+    color: rgb(37, 106, 196);
+    text-decoration: underline;
+    font-family: "Times New Roman",Times,serif;
+    padding-top: 50px;
+}

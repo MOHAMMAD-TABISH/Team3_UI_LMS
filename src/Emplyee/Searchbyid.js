@@ -18,8 +18,8 @@ export default class Searchbyid extends Component {
     }
     searchbyid(e){
         e.preventDefault();
-        let emp_Id=this.state.emp_Id;
-        axios.get('http://localhost:27852/api/Employee_LMS/MyDetails/'+emp_Id).then(response=>
+        let UserEmail =sessionStorage.getItem("UserEmail");
+        axios.get('http://localhost:27852/api/Employee_LMS/MyDetail/'+UserEmail).then(response=>
         {
             this.setState({
                 emp_Id:response.data.emp_Id,
@@ -41,14 +41,15 @@ export default class Searchbyid extends Component {
         return (
             <div>
                  <div style={{textAlign:'center'}}>
-              <h3> <strong>Search By Id</strong> </h3>
+              <h3> <strong>My Details</strong> </h3>
+              <button  onClick={(e)=>this.searchbyid(e)}>Click me </button>
             </div><br/>
             <div className="search-by-id-input" style={{textAlign:'center'}}>
-            <label>Enter the Id</label>
+            {/* <label>Enter the Id</label>
             <div></div>
             <input type="text" name="emp_Id" onChange={(e)=>this.setState({emp_Id:e.target.value})}>
             </input>
-            <button onClick={(e)=>this.searchbyid(e)}>Search</button>
+            <button onClick={(e)=>this.searchbyid(e)}>Search</button> */}
             </div>
             <br/><br/><br/>
             <table border="1" align="center" >
@@ -61,7 +62,7 @@ export default class Searchbyid extends Component {
                     <td>available_Leave</td>
                 </tr>
                 <tr>
-                <td>{this.state.emp_Id}</td>
+                <td>{emp_Id}</td>
                 <td>{emp_Name}</td>
                 <td>{emp_Email}</td>
                 <td>{emp_Mobile}</td>

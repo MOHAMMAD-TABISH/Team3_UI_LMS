@@ -15,12 +15,13 @@ export default class Dashboard extends Component {
             available_Leave:''
 
         }
-        this.searchbyid=this.searchbyid.bind(this)
+        // this.searchbyid=this.searchbyid.bind(this)
+      
     }
     searchbyid(e){
         e.preventDefault();
-        let emp_Id=this.state.emp_Id;
-        axios.get('http://localhost:27852/api/Employee_LMS/MyDetails/'+emp_Id).then(response=>
+        let UserEmail =sessionStorage.getItem("UserEmail");
+        axios.get('http://localhost:27852/api/Employee_LMS/MyDetail/'+UserEmail).then(response=>
         {
             this.setState({
                 emp_Id:response.data.emp_Id,
@@ -32,6 +33,7 @@ export default class Dashboard extends Component {
             })
         }).catch(error=>{console.warn(error);})
     }
+    
     render() {
         const{emp_Id}=this.state;
         const{emp_Name}=this.state;
@@ -39,13 +41,14 @@ export default class Dashboard extends Component {
         const{emp_Mobile}=this.state;
         const{emp_Dept}=this.state;
         const{available_Leave}=this.state;
+        let UserEmail = localStorage.getItem("UserEmail");
         return (
             <>
            <div>
               <div class="col main pt-5 mt-3">
          
-         
-         <h3 class="lead d-none d-sm-block"><strong>Welcome To Your Dashboard</strong></h3><br/>
+       
+         <h3 class="lead d-none d-sm-block"><strong>Welcome To {UserEmail} Dashboard</strong></h3><br/>
   
         
          <div class="row mb-3">
@@ -58,7 +61,7 @@ export default class Dashboard extends Component {
                         <h6 class="text-uppercase">My Details</h6><br/><br/>
                         {/* <input type="number" className="id-input" ></input>  */}
                         <Link to={'/Searchbyid'}>
-                         <button style={{backgroundColor:"Yellow"}}>Click me</button></Link>
+                         <button style={{backgroundColor:"Yellow"}} >Click me</button></Link>
                      </div>
                  </div>
              </div>
@@ -79,8 +82,8 @@ export default class Dashboard extends Component {
                          <div class="rotate">
                            <i class="fab fa-twitter fa-4x"></i>
                          </div>
-                         <h6 class="text-uppercase">Apply for Leave</h6><br/>
-                         <button style={{backgroundColor:"lightgreen"}}>Click me</button>
+                         <h6 class="text-uppercase">Apply for Leave</h6><br/><Link to={'/Apply_leave'}>
+                         <button style={{backgroundColor:"lightgreen"}}>Click me</button></Link>
                      </div>
                  </div>
              </div>

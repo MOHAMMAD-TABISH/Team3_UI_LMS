@@ -32,7 +32,7 @@ export default class Create_employee extends Component {
             password:this.state.password
         }).then(response=>{
             console.warn(response);
-            alert("data inserted");
+            alert("Employee created");
         }).catch(error=>{
             alert("error");
         })

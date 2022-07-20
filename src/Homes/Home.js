@@ -16,13 +16,13 @@ export default class Home extends Component {
           <div className='col-md-6 pt-5 pt-lg-0 order-2 order-lg-1'>
             <h1>Welcome to <strong>Leave Management System </strong> 
             </h1>
-            
+            <br/>
             <h7 className='my-3'>
-              This will help you to apply for leave very easy
+              This will help you to apply for leave 
             </h7>
             <div className='mt3'>
               <Link to={'/sign-in'}>
-            <button className='abc'>Get Started
+            <button className='abc'>Apply Leave
             </button>
             </Link>
             </div>
