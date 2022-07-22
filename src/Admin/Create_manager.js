@@ -23,7 +23,7 @@ export default class Create_manager extends Component {
     }
     CreateNewManager()
     {
-        axios.post('http://localhost:27852/api/Manager/InsertManager',{
+        axios.post('http://localhost:27853/api/Manager/InsertManager',{
             
             employeeId:this.state.employeeId,
             mng_Name:this.state.mng_Name,          
@@ -39,53 +39,52 @@ export default class Create_manager extends Component {
     render() {
         return (
             <> <div>
-               <h3><strong>Fill this form to Create Manager</strong></h3><br/> 
-            </div>
-            <form>
-                <table>
-                <tr>
-                        <td>
-                           Enter Employee Id
-                        </td>
-                        <td><input type="text" name="employeeId"
-                        onChange={(e)=>this.handlechange({employeeId:e.target.value})}></input></td>
-                    </tr>
-            
-                    <tr>
-                        <td>
-                           Enter Manager Name
-                        </td>
-                        <td><input type="text" name="mng_Name"
-                        onChange={(e)=>this.handlechange({mng_Name:e.target.value})}></input></td>
-                    </tr>
+            <h3 className="head"><strong>Fill this form to Create Manager</strong></h3><br/> 
+         </div>
+         <form>
+             <table>
+             <tr>
+                     <td className="label">
+                        Enter Employee Id:
+                     </td>
+                     <td><input className="input" type="text" name="employeeId" placeholder="Enter Employee Id"
+                     onChange={(e)=>this.handlechange({employeeId:e.target.value})}></input></td>
+                 </tr>
+         
+                 <tr>
+                     <td className="label">
+                        Enter Manager Name:
+                     </td>
+                     <td><input  className="input" type="text" name="mng_Name" placeholder="Enter Manager Name"
+                     onChange={(e)=>this.handlechange({mng_Name:e.target.value})}></input></td>
+                 </tr>
 
-                    <tr>
-                        <td>
-                           Enter Manager Email
-                        </td>
-                        <td><input type="text" name="mng_Email"
-                        onChange={(e)=>this.handlechange({mng_Email:e.target.value})}></input></td>
-                    </tr>
+                 <tr>
+                     <td className="label">
+                        Enter Manager Email:
+                     </td>
+                     <td><input  className="input" type="text" name="mng_Email" placeholder="Enter Manager Email"
+                     onChange={(e)=>this.handlechange({mng_Email:e.target.value})}></input></td>
+                 </tr>
 
-                    <tr>
-                        <td>
-                           Enter Manager Mobile
-                        </td>
-                        <td><input type="text" name="mng_Mobile"
-                        onChange={(e)=>this.handlechange({mng_Mobile:e.target.value})}></input></td>
-                    </tr>
+                 <tr>
+                     <td className="label">
+                        Enter Manager Mobile:
+                     </td>
+                     <td><input  className="input" type="text" name="mng_Mobile" placeholder="Enter Manager Mobile"
+                     onChange={(e)=>this.handlechange({mng_Mobile:e.target.value})}></input></td>
+                 </tr><br/>
 
-                    <tr>
-                        <td><button type="button" onClick={this.CreateNewManager}>Create</button></td>
-                    </tr>
-                </table>
+                 <tr>
+                     <td><button className="btn" type="button" onClick={this.CreateNewManager}>Create</button></td>
+                 </tr>
+             </table>
 
-            </form>
-            <br/>
-            <Link to={'/Admin_Dashboard'}>
-       <button className="showall-back-button" >Back</button></Link>
-            </>
-            
+         </form>
+         <br/>
+         <Link to={'/Admin_Dashboard'}>
+    <button className="btn" >Back</button></Link>
+         </>
         )
     }
 }

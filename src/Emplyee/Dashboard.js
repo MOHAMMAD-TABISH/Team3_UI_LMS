@@ -6,7 +6,7 @@ export default class Dashboard extends Component {
     constructor(){
         super();
         this.state={
-            
+            Employee:[],
             emp_Id:'',
             emp_Name:'',
             emp_Email:'',
@@ -21,34 +21,31 @@ export default class Dashboard extends Component {
     searchbyid(e){
         e.preventDefault();
         let UserEmail =sessionStorage.getItem("UserEmail");
-        axios.get('http://localhost:27852/api/Employee_LMS/MyDetail/'+UserEmail).then(response=>
+        axios.get('http://localhost:27853/api/Employee_LMS/MyDetail/'+UserEmail).then(response=>
         {
             this.setState({
+                Employee:response.data.Employee,
                 emp_Id:response.data.emp_Id,
-                emp_Name:response.data.emp_Name,
+                emp_Name:response.data,
             emp_Email:response.data.emp_Email,
             emp_Mobile:response.data.emp_Mobile,
             emp_Dept:response.data.emp_Dept,
             available_Leave:response.data.available_Leave
             })
         }).catch(error=>{console.warn(error);})
+        let EmpId = sessionStorage.getItem("emp_Id");
     }
     
     render() {
-        const{emp_Id}=this.state;
-        const{emp_Name}=this.state;
-        const{emp_Email}=this.state;
-        const{emp_Mobile}=this.state;
-        const{emp_Dept}=this.state;
-        const{available_Leave}=this.state;
-        let UserEmail = localStorage.getItem("UserEmail");
+        let UserID =sessionStorage.getItem("UserID");
+        
         return (
             <>
+              <p>Employee Id : {UserID}</p>
            <div>
               <div class="col main pt-5 mt-3">
          
-       
-         <h3 class="lead d-none d-sm-block"><strong>Welcome To {UserEmail} Dashboard</strong></h3><br/>
+         <h3 class="lead d-none d-sm-block"><strong>Welcome To Dashboard</strong></h3><br/>
   
         
          <div class="row mb-3">
@@ -72,7 +69,7 @@ export default class Dashboard extends Component {
                              <i class="fa fa-list fa-4x"></i>
                          </div>
                          <h6 class="text-uppercase">My Manager</h6><br/><br/>
-                         <button style={{backgroundColor:"hotpink"}}>Click me</button>
+                         <Link to={'/Manager_Info'}><button style={{backgroundColor:"hotpink"}}>Click me</button></Link>
                      </div>
                  </div>
              </div>
@@ -94,7 +91,8 @@ export default class Dashboard extends Component {
                              <i class="fa fa-share fa-4x"></i>
                          </div>
                          <h6 class="text-uppercase">All Leave Status</h6><br/>
-                         <button style={{backgroundColor:"lightred"}}>Click me</button>
+                         <Link to={'/All_leave_status'}>
+                         <button style={{backgroundColor:"lightred"}}>Click me</button></Link>
                      </div>
                  </div>
              </div>

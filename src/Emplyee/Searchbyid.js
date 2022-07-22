@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 export default class Searchbyid extends Component {
     constructor(){
         super();
         this.state={
-            
-            emp_Id:'',
+            Employee:[],
+           emp_Id:'',
             emp_Name:'',
             emp_Email:'',
             emp_Mobile:'',
@@ -18,8 +19,8 @@ export default class Searchbyid extends Component {
     }
     searchbyid(e){
         e.preventDefault();
-        let UserEmail =sessionStorage.getItem("UserEmail");
-        axios.get('http://localhost:27852/api/Employee_LMS/MyDetail/'+UserEmail).then(response=>
+        let UserID =sessionStorage.getItem("UserID");
+        axios.get('http://localhost:27853/api/Employee_LMS/MyDetails/'+UserID).then(response=>
         {
             this.setState({
                 emp_Id:response.data.emp_Id,
@@ -29,49 +30,59 @@ export default class Searchbyid extends Component {
             emp_Dept:response.data.emp_Dept,
             available_Leave:response.data.available_Leave
             })
+            
         }).catch(error=>{console.warn(error);})
+       
     }
-    render() {
+   
+         render() {
         const{emp_Id}=this.state;
         const{emp_Name}=this.state;
         const{emp_Email}=this.state;
         const{emp_Mobile}=this.state;
         const{emp_Dept}=this.state;
         const{available_Leave}=this.state;
+       
         return (
             <div>
-                 <div style={{textAlign:'center'}}>
-              <h3> <strong>My Details</strong> </h3>
-              <button  onClick={(e)=>this.searchbyid(e)}>Click me </button>
-            </div><br/>
-            <div className="search-by-id-input" style={{textAlign:'center'}}>
-            {/* <label>Enter the Id</label>
-            <div></div>
-            <input type="text" name="emp_Id" onChange={(e)=>this.setState({emp_Id:e.target.value})}>
-            </input>
-            <button onClick={(e)=>this.searchbyid(e)}>Search</button> */}
-            </div>
-            <br/><br/><br/>
-            <table border="1" align="center" >
-                <tr>
-                    <td>emp_Id</td>
-                    <td>emp_Name</td>
-                    <td>emp_Email</td>
-                    <td>emp_Mobile</td>
-                    <td>emp_Dept</td>
-                    <td>available_Leave</td>
-                </tr>
-                <tr>
-                <td>{emp_Id}</td>
-                <td>{emp_Name}</td>
-                <td>{emp_Email}</td>
-                <td>{emp_Mobile}</td>
-                <td>{emp_Dept}</td>
-                <td>{available_Leave}</td>
-                </tr>
-            </table><br/><br/>
-            <Link to={'/Dashboard'}><button>Back</button></Link>
-            </div>
+            <div style={{textAlign:'center'}}>
+         <h3> <strong>My Details</strong> </h3>
+         <button  onClick={(e)=>this.searchbyid(e)}>Click me </button>
+       </div><br/>
+       <div className="search-by-id-input" style={{textAlign:'center'}}>
+       {/* <label>Enter the Id</label>
+       <div></div>
+       <input type="text" name="emp_Id" onChange={(e)=>this.setState({emp_Id:e.target.value})}>
+       </input>
+       <button onClick={(e)=>this.searchbyid(e)}>Search</button> */}
+       </div>
+       {/* <br/><br/><br/> */}
+       {/* <table border="1" align="center"> */}
+       <MDBTable>
+       <MDBTableHead>
+           <tr className="table-primary">
+               <th scope="col">emp_Id</th>
+               <th scope="col">emp_Name</th>
+               <th scope="col">emp_Email</th>
+               <th scope="col">emp_Mobile</th>
+               <th scope="col">emp_Dept</th>
+               <th scope="col">available_Leave</th>
+           </tr>
+           </MDBTableHead>
+           <MDBTableBody>
+           <tr>
+           <td scope="row">{emp_Id}</td>
+           <td scope="row">{emp_Name}</td>
+           <td scope="row">{emp_Email}</td>
+           <td scope="row">{emp_Mobile}</td>
+           <td scope="row">{emp_Dept}</td>
+           <td scope="row">{available_Leave}</td>
+           </tr>
+           </MDBTableBody>
+           </MDBTable>
+       {/* </table><br/><br/> */}
+       <Link to={'/Dashboard'}><button className="btn">Back</button></Link>
+       </div>
         )
     }
 }

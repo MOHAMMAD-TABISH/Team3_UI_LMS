@@ -14,6 +14,9 @@ import Create_employee from './Admin/Create_employee'
 import Searchbyid from './Emplyee/Searchbyid'
 import Create_manager from './Admin/Create_manager'
 import Apply_leave from './Emplyee/Apply_leave'
+import Manager_showbyid from './Emplyee/Manager_showbyid'
+import All_leave_status from './Emplyee/All_leave_status'
+  
 function App() {
   return (
     <Router>
@@ -50,6 +53,7 @@ function App() {
             </div>
           </div>
         </nav>
+
         <div className="auth-wrapper">
           <div className="auth-inner">
             <Routes>
@@ -66,10 +70,13 @@ function App() {
               <Route path="/Searchbyid" element={<Searchbyid/>}></Route>
               <Route path="/Create_manager" element={<Create_manager/>}></Route>
               <Route path="/Apply_leave" element={<Apply_leave/>} />
+              <Route path="/Manager_Info" element={<Manager_showbyid/>} />
+              <Route path="/All_leave_status" element={<All_leave_status/>} /> 
             </Routes>
           </div>
         </div>
       </div>
+
     </Router>
   )
 }

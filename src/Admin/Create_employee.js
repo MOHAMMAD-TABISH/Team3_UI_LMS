@@ -5,8 +5,7 @@ import { Route } from 'react-router';
 export default class Create_employee extends Component {
     constructor(){
         super();
-        this.state={
-           
+        this.state={       
             emp_Name:'',
             emp_Email:'',
             emp_Mobile:'',
@@ -22,7 +21,7 @@ export default class Create_employee extends Component {
     }
     CreateNewEmployee()
     {
-        axios.post('http://localhost:27852/api/Employee_LMS/InsertEmpolyee',{
+        axios.post('http://localhost:27853/api/Employee_LMS/InsertEmpolyee',{
           
             emp_Name:this.state.emp_Name,
             emp_Email:this.state.emp_Email,
@@ -40,67 +39,67 @@ export default class Create_employee extends Component {
     render() {
         return (
             <> <div>
-               <h3><strong>Fill this form to Create Employee</strong></h3><br/> 
-            </div>
-            <form>
-                <table>
-            
-                    <tr>
-                        <td>
-                           Emter Employee Name
-                        </td>
-                        <td><input type="text" name="emp_Name"
-                        onChange={(e)=>this.handlechange({emp_Name:e.target.value})}></input></td>
-                    </tr>
+            <h3 className="head"><strong>Fill this form to Create Employee</strong></h3>
+         </div>
+         <form>
+             <table>
+         
+                 <tr>
+                     <td className="label">
+                        Enter Emp Name:
+                     </td>
+                     <td><input className="input" type="text" name="emp_Name" placeholder="Enter Emp Name"
+                     onChange={(e)=>this.handlechange({emp_Name:e.target.value})}></input></td>
+                 </tr>
 
-                    <tr>
-                        <td>
-                            Enter Employee Email
-                        </td>
-                        <td><input type="text" name="emp_Email"
-                        onChange={(e)=>this.handlechange({emp_Email:e.target.value})}></input></td>
-                    </tr>
+                 <tr>
+                     <td className="label">
+                         Enter Emp Email
+                     </td>
+                     <td><input className="input" type="text" name="emp_Email" placeholder="Enter Emp Email"
+                     onChange={(e)=>this.handlechange({emp_Email:e.target.value})}></input></td>
+                 </tr>
 
-                    <tr>
-                        <td>
-                            Enter Employee Mobile Number
-                        </td>
-                        <td><input type="text" name="emp_Mobile"
-                        onChange={(e)=>this.handlechange({emp_Mobile:e.target.value})}></input></td>
-                    </tr>
+                 <tr>
+                     <td className="label">
+                         Enter Emp Mobile Number:
+                     </td>
+                     <td><input className="input" type="text" name="emp_Mobile" placeholder="Enter Emp Mobile Number"
+                     onChange={(e)=>this.handlechange({emp_Mobile:e.target.value})}></input></td>
+                 </tr>
 
-                    <tr>
-                        <td>
-                            Enter Employee Department 
-                        </td>
-                        <td><input type="text" name="emp_Dept"
-                        onChange={(e)=>this.handlechange({emp_Dept:e.target.value})}></input></td>
-                    </tr>
+                 <tr>
+                     <td className="label">
+                         Enter Emp Department:
+                     </td>
+                     <td><input className="input" type="text" name="emp_Dept" placeholder="Enter Emp Department"
+                     onChange={(e)=>this.handlechange({emp_Dept:e.target.value})}></input></td>
+                 </tr>
 
-                    <tr>
-                        <td>
-                            Enter the Available Detail
-                        </td>
-                        <td><input type="text" name="available_Leave"
-                        onChange={(e)=>this.handlechange({available_Leave:e.target.value})}></input></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Enter the Password
-                        </td>
-                        <td><input type="text" name="password"
-                        onChange={(e)=>this.handlechange({available_Leave:e.target.value})}></input></td>
-                    </tr>
-                    <tr>
-                        <td><button type="button" onClick={this.CreateNewEmployee}>Create</button></td>
-                    </tr>
-                </table>
+                 <tr>
+                     <td className="label">
+                         Enter the Available Leaves:
+                     </td>
+                     <td><input className="input" type="text" name="available_Leave" placeholder="Available Leaves"
+                     onChange={(e)=>this.handlechange({available_Leave:e.target.value})}></input></td>
+                 </tr>
+                 <tr>
+                     <td className="label">
+                         Enter the Password:
+                     </td>
+                     <td><input className="input" type="text" name="password" placeholder="Enter the password"
+                     onChange={(e)=>this.handlechange({available_Leave:e.target.value})}></input></td>
+                 </tr>
+                 <tr>
+                     <td><button className="btn" type="button" onClick={this.CreateNewEmployee}>Create</button></td>
+                 </tr>
+             </table>
 
-            </form>
-            <br/>
-            <Link to={'/Admin_Dashboard'}>
-       <button className="showall-back-button" >Back</button></Link>
-            </>
+         </form>
+         <br/>
+         <Link to={'/Admin_Dashboard'}>
+    <button className="btn" >Back</button></Link>
+         </>
         )
     }
 }

@@ -10,7 +10,7 @@ export default class Showall_manager extends Component {
         }
     }
     componentDidMount(){
-        axios.get('http://localhost:27852/api/Manager/ShowAll').then(response=>{
+        axios.get('http://localhost:27853/api/Manager/ShowAll').then(response=>{
             this.setState({Manager:response.data})
         }).catch(error=>{
             console.warn(error);
