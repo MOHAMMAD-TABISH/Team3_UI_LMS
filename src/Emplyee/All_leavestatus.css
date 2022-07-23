@@ -40,21 +40,22 @@ form{
 
 }
 .head{
-    color: rgb(22, 4, 7);
+    color: rgb(8, 54, 32);
     text-decoration: underline;
     font-family: "Times New Roman",Times,serif;
     padding-top: 10px;
     font-size: xx-large;
     text-align: center;
 
+
 }
 .form-control{
     padding: 5px;
       margin: 5px;
       border-radius: 10px 10px;
-      border-color: rgb(112, 133, 250);
-      box-shadow: inset 0px 0px 25px 0px rgb(123, 165, 243);
-      width: 500px;
+      border-color: rgb(31, 64, 35);
+      box-shadow: inset 0px 0px 25px 0px rgb(52, 81, 63);
+      width: 650px;
       height: 50px;
   }
   /* .forgot-password{
@@ -62,4 +63,34 @@ form{
       border-radius: 10px 10px;
       border-color: rgb(112, 133, 250);
       box-shadow: inset 0px 0px 25px 0px rgb(123, 165, 243);
+  } */
+  .btn{
+    background-color: rgb(46, 73, 56);
+    border: cornsilk;
+    color: cornsilk;
+    font-size: medium;
+    padding: 5px 20px;
+    border-radius: 8px;
+}
+.fixTableHead {
+    overflow-y: auto;
+    height: 250px;
+
+  }
+  .fixTableHead thead th {
+    position: sticky;
+    top: 0;
+  }
+  /* table {
+    border-collapse: collapse;        
+    width: 100%;
+  }
+  th,
+  td {
+    padding: 8px 15px;
+    border: 2px solid #4e5849;
+  }
+  th {
+    background: #475242;
+    color: rgb(226, 209, 209);
   } */

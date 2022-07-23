@@ -52,7 +52,7 @@ import React, { Component } from 'react';
 import { Navigate } from 'react-router';
 import './Home.css';
 import {Link} from 'react-router-dom'
-
+import { Wave } from 'react-animated-text'
 export default class Home extends Component {
   
   render() {
@@ -66,8 +66,22 @@ export default class Home extends Component {
           <div className='col-md-10 pt-5 pt-lg-0 order-2 order-lg-1'>
           <br/>
           <br/>
-            <h1 style={{textAlign:'center'}}>Welcome to <br/> <strong>Leave Management System </strong> 
-            </h1>
+          <h2 className="head" >   <Wave 
+          
+          text="Welcome To"
+          effect="stretch"
+          effectChange={2.0}
+         
+        /> </h2>
+            
+         <h1 className="head">   <Wave 
+          
+  text="Leave Management System"
+  effect="stretch"
+  effectChange={2.0}
+  
+ 
+/> </h1>
             <br/>
             <div className='mt3'>
               <Link to={'/sign-in'}>
@@ -86,10 +100,10 @@ export default class Home extends Component {
            
         </div>
       </div>
-      <div>
-                <h7>
-                    Created by Team 3 
-                </h7>
+      <div><div className="credit">
+                <h7 >
+                   <strong>Created by Team 3 </strong> 
+                </h7></div>
       </div>
     </div>
     {/* <div className="container">

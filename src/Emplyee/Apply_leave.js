@@ -2,7 +2,7 @@ import "./Apply_leavecsss.css";
 import React, { Component } from 'react'
 import axios from 'axios';
 import './All_leavestatus.css'
-import {Link} from 'react-router-dom'
+import {Link,Navigate} from 'react-router-dom'
 
 
 export default class Apply_leave extends Component {
@@ -20,6 +20,14 @@ export default class Apply_leave extends Component {
             "appliedOn": "",
             "mng_Comments": "",
             "emp_Id": ''
+        }
+        const token=localStorage.getItem("token")
+        let loggedIn=true
+        if(token == null){
+            loggedIn=false
+        }
+        this.state={
+            loggedIn
         }
         this.CreateNewApplyLeave=this.CreateNewApplyLeave.bind(this);
         this.handlechange=this.handlechange.bind(this);
@@ -59,7 +67,9 @@ export default class Apply_leave extends Component {
     }
    
     render() {
-        
+        if(this.state.loggedIn==false){
+            return<Navigate to="/Admin_Login"/>
+         }
         return (<>
         <div>
                 <h1 className="head" >Apply Leave Form</h1>
@@ -77,19 +87,21 @@ export default class Apply_leave extends Component {
             </tr>
             <div>
             <label className="label"> StartDate: </label>
-            <input  className="input"  type="date" placeholder="StartDate"
+            <input  className="input"  type="datetime-local" placeholder="StartDate"
             onChange={(e)=>this.handlechange({startDate:e.target.value})}/>
             </div><div>
             <label className="label"> EndDate: </label>
-            <input  className="input"  type="date" placeholder="EndDate"
+            <input  className="input"  type="datetime-local" placeholder="EndDate"
             onChange={(e)=>this.handlechange({endDate:e.target.value})}/>
             </div>
             <div>
         
             <label className="label" for="leavetype"> LeaveType: </label>
             <select className="drop"  id="leavetype" name="leavetype" size="0" onChange={(e)=>this.handlechange({leaveType:e.target.value})}>
-                <option value="Earned Leave">Earned Leave</option>
+                <option value=""></option>
                 <option value="sick Leave">Sick Leave</option>
+                <option value="Earned Leave">Earned Leave</option>
+                <option value="Maternity Leave">Maternity Leave</option>
             </select>
             
             </div>
@@ -101,7 +113,7 @@ export default class Apply_leave extends Component {
              onChange={(e)=>this.handlechange({leaveReason:e.target.value})}/>
             <br/>
             <label className="label"> AppliedOn: </label>
-            <input  className="input"  type="date" placeholder="AppliedOn"
+            <input  className="input"  type="datetime-local" placeholder="AppliedOn"
              onChange={(e)=>this.handlechange({appliedOn:e.target.value})}/><br/>
             {/* <label className="label"> Mng-Comments: </label>
             <input  className="input"  type="text" placeholder="Mng_Comments"

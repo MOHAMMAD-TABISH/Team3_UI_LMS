@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom' 
+
 const initialState=
 {
       Employee:[],
       Emp_Email:'',
       Password:'',
       emailError: "",
-      passwordError: ""
+      passwordError: "",
+      loggedIn:""
 
 }
 export default class Admin_Login extends Component {
@@ -52,6 +54,11 @@ export default class Admin_Login extends Component {
         let Emp_Email = this.state.Emp_Email;
         let Password = this.state.Password;
         if(Emp_Email=="admin@gmail.com"&&Password=="Admin"){
+          
+          localStorage.setItem("token","hgjklouyt")
+          this.setState({
+          loggedIn:true
+          })
             alert("Login Successful");
             window.location="/Admin_Dashboard"
         }
@@ -77,6 +84,8 @@ export default class Admin_Login extends Component {
         
     }
   render() {
+    let loggedIn=this.state.loggedIn
+  
     return (
       <>
       <form>

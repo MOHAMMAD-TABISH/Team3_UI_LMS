@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link,Navigate} from 'react-router-dom';
 import './Manager.css'
 
 export default class ManagerDetails extends Component {
@@ -14,6 +14,14 @@ export default class ManagerDetails extends Component {
             mng_Email: '',
             mng_Mobile: ''
 
+        }
+        const token=localStorage.getItem("token")
+        let loggedIn=true
+        if(token == null){
+            loggedIn=false
+        }
+        this.state={
+            loggedIn
         }
         this.searchbyid=this.searchbyid.bind(this)
     }
@@ -34,6 +42,8 @@ export default class ManagerDetails extends Component {
     }
 
     render() {
+        if(this.state.loggedIn==false){
+            return<Navigate to="/Admin_Login"/>}
        const{mng_Id}=this.state;
         const{employeeId}=this.state;
         const{mng_Name}=this.state;
@@ -50,12 +60,12 @@ export default class ManagerDetails extends Component {
             </div>
             {/* <input type="text"  name="emp_Id" onChange={(e)=>this.setState({emp_Id:e.target.value})}>
             </input> */}
-             <button className="btn2" onClick={(e)=>this.searchbyid(e)}>Click me </button>
+             <button className="btn" onClick={(e)=>this.searchbyid(e)}>SHOW</button>
             </div>
             {/* <button onClick={(e)=>this.searchbyid(e)}>Search</button></div> */}
             <br/><br/>
-            <table className="table" border="1" align="center">
-                <tr >
+            <table className="table" border="1" align="center" >
+                <tr className="table-primary">
                     <th>mng_Id</th>
                     {/* <th>employeeId</th> */}
                     <th>mng_Name</th>

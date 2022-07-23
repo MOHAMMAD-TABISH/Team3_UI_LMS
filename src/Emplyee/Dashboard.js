@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import './Dashboard.css'
 import axios from 'axios'
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+import ReactRoundedImage from "react-rounded-image";
 export default class Dashboard extends Component {
     constructor(){
         super();
@@ -12,40 +13,57 @@ export default class Dashboard extends Component {
             emp_Email:'',
             emp_Mobile:'',
             emp_Dept:'',
-            available_Leave:''
+            available_Leave:'',
+            image:''
 
         }
         // this.searchbyid=this.searchbyid.bind(this)
-      
+        const token=localStorage.getItem("token")
+        let loggedIn=true
+        if(token == null){
+            loggedIn=false
+        }
+        this.state={
+            loggedIn
+        }
     }
-    searchbyid(e){
-        e.preventDefault();
-        let UserEmail =sessionStorage.getItem("UserEmail");
-        axios.get('http://localhost:27853/api/Employee_LMS/MyDetail/'+UserEmail).then(response=>
+    logout(){
+        localStorage.removeItem('token')
+    }
+    componentDidMount(){
+      //  e.preventDefault();
+      let UserID =sessionStorage.getItem("UserID");
+      axios.get('http://localhost:27853/api/Employee_LMS/MyDetails/'+UserID).then(response=>
         {
             this.setState({
-                Employee:response.data.Employee,
                 emp_Id:response.data.emp_Id,
-                emp_Name:response.data,
+                emp_Name:response.data.emp_Name,
             emp_Email:response.data.emp_Email,
             emp_Mobile:response.data.emp_Mobile,
             emp_Dept:response.data.emp_Dept,
-            available_Leave:response.data.available_Leave
+            available_Leave:response.data.available_Leave,
+            image:response.data.image
             })
+            
         }).catch(error=>{console.warn(error);})
-        let EmpId = sessionStorage.getItem("emp_Id");
+       
     }
     
     render() {
         let UserID =sessionStorage.getItem("UserID");
-        
+        if(this.state.loggedIn==false){
+            return<Navigate to="/Admin_Login"/>
+        }
+        const{image}=this.state;
+        const{emp_Dept}=this.state;
         return (
             <>
+            <ReactRoundedImage image={image} roundedSize="0" imageWidth="90" imageHeight="90" />
               <p>Employee Id : {UserID}</p>
-           <div>
-              <div class="col main pt-5 mt-3">
+           
+              {/* <div class="col main pt-5 mt-3"> */}
          
-         <h3 class="lead d-none d-sm-block"><strong>Welcome To Dashboard</strong></h3><br/>
+         <h3 class="lead d-none d-sm-block"><strong>Welcome To Dashboard</strong></h3>
   
         
          <div class="row mb-3">
@@ -98,9 +116,9 @@ export default class Dashboard extends Component {
                  </div>
              </div>
          </div>
-     </div>
-     </div>
-     <Link to={'/sign-in'}><button>Log Out</button></Link>
+     {/* </div> */}
+   
+     <Link to={'/sign-in'}><button className="btn" onClick={()=>this.logout()}>Log Out</button></Link>
         </>
         )
     }

@@ -1,12 +1,25 @@
 import React, { Component } from 'react'
-import { Link, useHref, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 export default class Admin_Dashboard extends Component {
     constructor(){
-        super();
+        super()
+        const token=localStorage.getItem("token")
+        let loggedIn=true
+        if(token == null){
+            loggedIn=false
+        }
+        this.state={
+            loggedIn
+        }
     }
-    
+    logout(){
+        localStorage.removeItem('token')
+    }
     render() {
+        if(this.state.loggedIn==false){
+            return<Navigate to="/Admin_Login"/>
+        }
         return (
             <div>
               <div class="col main pt-5 mt-3">
@@ -67,7 +80,7 @@ export default class Admin_Dashboard extends Component {
              </div>
          </div>
      </div>
-     <Link to={'/Admin_Login'}><button>Log Out</button></Link>
+     <Link to={'/Admin_Login'}><button onClick={()=>this.logout()}>Log Out</button></Link>
      </div>
         )
     }

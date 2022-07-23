@@ -7,7 +7,8 @@ const initialState =
   Emp_ID:'',
   Password:'',
   emailError: "",
-  passwordError: ""
+  passwordError: "",
+  loggedIn:""
 
 }
 export default class Login extends Component {
@@ -89,6 +90,10 @@ export default class Login extends Component {
             {
               console.log(result);
               if(result>0){
+                localStorage.setItem("token","hgjklouytkajkhdkfnhn")
+          this.setState({
+          loggedIn:true
+          })
                 alert("Valid");
                 window.location="/Dashboard";
                 sessionStorage.setItem("UserID",Emp_ID);
@@ -103,6 +108,7 @@ export default class Login extends Component {
     }
     
   render() {
+    let loggedIn=this.state.loggedIn
     return (<>
       <form>
         <h3>Sign In</h3>
@@ -144,7 +150,7 @@ export default class Login extends Component {
             </label> */}
           </div><br/>
         </div>
-        <div className="d-grid">
+        <div className="btn1">
           <button type="submit" className="btn btn-primary"  onClick={this.Login}>
             Submit
           </button>

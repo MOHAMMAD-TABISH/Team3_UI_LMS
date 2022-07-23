@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Link,Navigate} from 'react-router-dom'
 import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 export default class Searchbyid extends Component {
     constructor(){
@@ -15,6 +15,14 @@ export default class Searchbyid extends Component {
             available_Leave:''
 
         }
+        const token=localStorage.getItem("token")
+        let loggedIn=true
+        if(token == null){
+            loggedIn=false
+        }
+        this.state={
+            loggedIn
+        }
         this.searchbyid=this.searchbyid.bind(this)
     }
     searchbyid(e){
@@ -28,26 +36,29 @@ export default class Searchbyid extends Component {
             emp_Email:response.data.emp_Email,
             emp_Mobile:response.data.emp_Mobile,
             emp_Dept:response.data.emp_Dept,
-            available_Leave:response.data.available_Leave
+            available_Leave:response.data.available_Leave,
+            image:response.data.image
             })
             
         }).catch(error=>{console.warn(error);})
        
     }
    
-         render() {
+         render() { if(this.state.loggedIn==false){
+            return<Navigate to="/Admin_Login"/>
+         }
         const{emp_Id}=this.state;
         const{emp_Name}=this.state;
         const{emp_Email}=this.state;
         const{emp_Mobile}=this.state;
         const{emp_Dept}=this.state;
         const{available_Leave}=this.state;
-       
+       const{image}=this.state;
         return (
             <div>
             <div style={{textAlign:'center'}}>
          <h3> <strong>My Details</strong> </h3>
-         <button  onClick={(e)=>this.searchbyid(e)}>Click me </button>
+         <button  onClick={(e)=>this.searchbyid(e) } className="btn">Show</button>
        </div><br/>
        <div className="search-by-id-input" style={{textAlign:'center'}}>
        {/* <label>Enter the Id</label>

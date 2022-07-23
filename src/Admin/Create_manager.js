@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import {Link} from 'react-router-dom'
+import {Link , Navigate} from 'react-router-dom'
 import {Route} from 'react-router';
 
 export default class Create_manager extends Component {
@@ -14,6 +14,15 @@ export default class Create_manager extends Component {
             mng_Email:'',
             mng_Mobile:''
         }
+        const token=localStorage.getItem("token")
+        let loggedIn=true
+        if(token == null){
+            loggedIn=false
+        }
+        this.state={
+            loggedIn
+        }
+    
         this.CreateNewManager=this.CreateNewManager.bind(this);
         this.handlechange=this.handlechange.bind(this);
 
@@ -37,6 +46,9 @@ export default class Create_manager extends Component {
         })
     }
     render() {
+        if(this.state.loggedIn==false){
+            return<Navigate to="/Admin_Login"/>
+        }
         return (
             <> <div>
             <h3 className="head"><strong>Fill this form to Create Manager</strong></h3><br/> 

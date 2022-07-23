@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Link,Navigate} from 'react-router-dom'
 import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 export default class Showall_manager extends Component {
     constructor(){
         super();
         this.state={
-            Manager:[],
-            
+            Manager:[]         
         }
+       
     }
     componentDidMount(){
         axios.get('http://localhost:27853/api/Manager/ShowAll').then(response=>{
@@ -25,7 +25,8 @@ export default class Showall_manager extends Component {
             <div className = "show-all-employee" className="head"> 
                 <strong>Show All Manager</strong><br/>
             </div><br/>
-            <MDBTable hover>
+            <div className="fixTableHead">
+            <MDBTable hover >
       <MDBTableHead>
             {/* <table className="show-all-employee-table" border={1} >  */}
             <tr className="table-primary">
@@ -51,11 +52,11 @@ export default class Showall_manager extends Component {
             {/* </table> */}
             
             </MDBTable>
+            </div>
            
       </div>  <br/>
       <Link to={'/Admin_Dashboard/'}>
        <button className="btn" >Back</button></Link> 
-       {/* <Link><button className="showall-back-button" >Back</button></Link>  */}
             </>
         )
     }
