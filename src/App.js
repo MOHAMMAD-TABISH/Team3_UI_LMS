@@ -16,7 +16,9 @@ import Create_manager from './Admin/Create_manager'
 import Apply_leave from './Emplyee/Apply_leave'
 import Manager_showbyid from './Emplyee/Manager_showbyid'
 import All_leave_status from './Emplyee/All_leave_status'
-  
+import {Forgot} from './component/Forgot'
+import ResetPass from './component/ResetPass'
+
 function App() {
   return (
     <Router>
@@ -72,6 +74,9 @@ function App() {
               <Route path="/Apply_leave" element={<Apply_leave/>} />
               <Route path="/Manager_Info" element={<Manager_showbyid/>} />
               <Route path="/All_leave_status" element={<All_leave_status/>} /> 
+              <Route path="/Forgot" element={<Forgot/>} />
+              <Route path="/ResetPass" element={<ResetPass/>} />
+
             </Routes>
           </div>
         </div>

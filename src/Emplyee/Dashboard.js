@@ -60,6 +60,7 @@ export default class Dashboard extends Component {
                         <Link to={'/Searchbyid'}>
                          <button style={{backgroundColor:"Yellow"}} >Click me</button></Link>
                      </div>
+                     
                  </div>
              </div>
              <div class="col-xl-3 col-sm-6 py-2">

@@ -59,7 +59,7 @@ export default class Login extends Component {
       {
           this.setState(
               {
-                  usernameError:"*Enter Name"})
+                  emailError:"*Enter ID"})
       }
       else if(this.state.Password==="")
       {
@@ -150,7 +150,11 @@ export default class Login extends Component {
           </button>
         </div>
         <p className="forgot-password text-right">
-           New User:<a href="/sign-up"> Register Now</a>
+           New User:<a href="/Create_employee"> Register Now</a>
+        </p>
+        <br/>
+        <p className="forgot-password text-right">
+        <a href="/Forgot"> Forgot password?</a>
         </p>
       </form>
       {/* <Link to={'/'}><button>Back</button></Link> */}

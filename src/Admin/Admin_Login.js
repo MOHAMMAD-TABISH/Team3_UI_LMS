@@ -31,7 +31,7 @@ export default class Admin_Login extends Component {
       {
           this.setState(
               {
-                  usernameError:"Enter Email"})
+                  emailError:"Enter Email"})
       }
       else if(this.state.Password==="")
       {
@@ -124,9 +124,6 @@ export default class Admin_Login extends Component {
             Submit
           </button>
         </div>
-        <p className="forgot-password text-right">
-          Forgot <a href="#">password?</a>
-        </p>
       </form>
             {/* <Link to={'/'}><button>Back</button></Link> */}
             </>

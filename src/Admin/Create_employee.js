@@ -88,7 +88,7 @@ export default class Create_employee extends Component {
                          Enter the Password:
                      </td>
                      <td><input className="input" type="text" name="password" placeholder="Enter the password"
-                     onChange={(e)=>this.handlechange({available_Leave:e.target.value})}></input></td>
+                     onChange={(e)=>this.handlechange({password:e.target.value})}></input></td>
                  </tr>
                  <tr>
                      <td><button className="btn" type="button" onClick={this.CreateNewEmployee}>Create</button></td>
