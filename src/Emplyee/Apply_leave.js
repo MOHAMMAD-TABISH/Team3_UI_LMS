@@ -61,6 +61,8 @@ export default class Apply_leave extends Component {
         }).then(response=>{
             console.warn(response);
             alert("Applied Leave");
+            setTimeout(10);
+            window.location.reload();
         }).catch(error=>{
             alert("error");
         })   

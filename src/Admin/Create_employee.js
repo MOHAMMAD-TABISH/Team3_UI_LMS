@@ -45,6 +45,8 @@ export default class Create_employee extends Component {
         }).then(response=>{
             console.warn(response);
             alert("Employee created");
+            setTimeout(10);
+            window.location.reload();
         }).catch(error=>{
             alert("error");
         })

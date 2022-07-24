@@ -41,6 +41,8 @@ export default class Create_manager extends Component {
         }).then(response=>{
             console.warn(response);
             alert("data inserted");
+            setTimeout(10);
+            window.location.reload();
         }).catch(error=>{
             alert("error");
         })

@@ -117,7 +117,11 @@ export default class Dashboard extends Component {
              </div>
          </div>
      {/* </div> */}
-   
+
+     
+     <Link to={'/Approval_deny'}><button style={{backgroundColor:"lightred"}}>Pending Approval</button></Link>
+     <br/>
+     <br/>
      <Link to={'/sign-in'}><button className="btn" onClick={()=>this.logout()}>Log Out</button></Link>
         </>
         )

@@ -147,7 +147,7 @@ export default class ResetPass extends Component {
              <div className="form-group">
                  <label htmlFor="email">Enter your Employee Id</label>
                  <input
-                  type="password"
+                  type="number"
                   className="form-control"
                   name="password"
                   

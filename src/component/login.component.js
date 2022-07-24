@@ -115,9 +115,9 @@ export default class Login extends Component {
         <div className="mb-3">
           <label>Enter Employee-Id</label>
           <input
-            type="email"
+            type="number"
             className="form-control"
-            placeholder="Enter email"
+            placeholder="Enter ID"
             name="Emp_ID"
             onChange={(e)=>this.handleChange({Emp_ID:e.target.value})}
           />
@@ -156,7 +156,7 @@ export default class Login extends Component {
           </button>
         </div>
         <p className="forgot-password text-right">
-           New User:<a href="/Create_employee"> Register Now</a>
+           New User:<a href="/sign-up"> Register Now</a>
         </p>
         <br/>
         <p className="forgot-password text-right">

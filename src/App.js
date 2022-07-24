@@ -18,6 +18,7 @@ import Manager_showbyid from './Emplyee/Manager_showbyid'
 import All_leave_status from './Emplyee/All_leave_status'
 import {Forgot} from './component/Forgot'
 import ResetPass from './component/ResetPass'
+import Approval_deny from './Emplyee/Approval_deny'
 
 function App() {
   return (
@@ -76,7 +77,8 @@ function App() {
               <Route path="/All_leave_status" element={<All_leave_status/>} /> 
               <Route path="/Forgot" element={<Forgot/>} />
               <Route path="/ResetPass" element={<ResetPass/>} />
-
+              <Route path="/Approval_deny" element={<Approval_deny/>} />
+            
             </Routes>
           </div>
         </div>
