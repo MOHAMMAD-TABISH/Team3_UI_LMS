@@ -10,7 +10,7 @@ export default class Create_manager extends Component {
 
             employeeId:'',
             mng_Name:'',
-          
+           mng_Id:'',
             mng_Email:'',
             mng_Mobile:''
         }
@@ -38,6 +38,7 @@ export default class Create_manager extends Component {
             mng_Name:this.state.mng_Name,          
             mng_Email:this.state.mng_Email,
             mng_Mobile:this.state.mng_Mobile,
+            mng_Id:this.state.mng_Id
         }).then(response=>{
             console.warn(response);
             alert("data inserted");
@@ -87,6 +88,13 @@ export default class Create_manager extends Component {
                      </td>
                      <td><input  className="input" type="text" name="mng_Mobile" placeholder="Enter Manager Mobile"
                      onChange={(e)=>this.handlechange({mng_Mobile:e.target.value})}></input></td>
+                 </tr>
+                 <tr>
+                     <td className="label">
+                        Enter Manager ID:
+                     </td>
+                     <td><input  className="input" type="text" name="mng_Id" placeholder="Enter Manager Id"
+                     onChange={(e)=>this.handlechange({mng_Id:e.target.value})}></input></td>
                  </tr><br/>
 
                  <tr>

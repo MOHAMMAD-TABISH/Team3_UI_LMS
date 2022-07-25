@@ -93,10 +93,10 @@ export default class All_leave_status extends Component {
   ApplyLeave:[]
            
         }
-        this.searchbyid=this.searchbyid.bind(this)
+       // this.searchbyid=this.searchbyid.bind(this)
     }
-    searchbyid(e){
-        e.preventDefault();
+    componentDidMount(){
+       // e.preventDefault();
         let UserID =sessionStorage.getItem("UserID");
         axios.get('http://localhost:27853/api/ApplyLeave/Emp_Leaves/'+UserID).then(response=>
         {
@@ -122,7 +122,7 @@ export default class All_leave_status extends Component {
        </div>
        {/* <input type="text"  name="emp_Id" onChange={(e)=>this.setState({emp_Id:e.target.value})}>
        </input> */}
-        <button className="btn" onClick={(e)=>this.searchbyid(e)}>Click me </button>
+        {/* <button className="btn" onClick={(e)=>this.searchbyid(e)}>Click me </button> */}
        </div>
        {/* <button onClick={(e)=>this.searchbyid(e)}>Search</button></div> */}
        <br/>

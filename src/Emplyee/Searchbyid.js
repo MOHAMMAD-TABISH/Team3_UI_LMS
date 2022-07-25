@@ -23,10 +23,10 @@ export default class Searchbyid extends Component {
         this.state={
             loggedIn
         }
-        this.searchbyid=this.searchbyid.bind(this)
+       // this.searchbyid=this.searchbyid.bind(this)
     }
-    searchbyid(e){
-        e.preventDefault();
+    componentDidMount(){
+       // e.preventDefault();
         let UserID =sessionStorage.getItem("UserID");
         axios.get('http://localhost:27853/api/Employee_LMS/MyDetails/'+UserID).then(response=>
         {
@@ -58,7 +58,7 @@ export default class Searchbyid extends Component {
             <div>
             <div style={{textAlign:'center'}}>
          <h3> <strong>My Details</strong> </h3>
-         <button  onClick={(e)=>this.searchbyid(e) } className="btn">Show</button>
+         {/* <button  onClick={(e)=>this.searchbyid(e) } className="btn">Show</button> */}
        </div><br/>
        <div className="search-by-id-input" style={{textAlign:'center'}}>
        {/* <label>Enter the Id</label>

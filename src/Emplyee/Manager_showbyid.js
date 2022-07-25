@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Link,Navigate} from 'react-router-dom';
 import './Manager.css'
+import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 
 export default class ManagerDetails extends Component {
     constructor(){
@@ -23,10 +24,10 @@ export default class ManagerDetails extends Component {
         this.state={
             loggedIn
         }
-        this.searchbyid=this.searchbyid.bind(this)
+       // this.searchbyid=this.searchbyid.bind(this)
     }
-    searchbyid(e){
-        e.preventDefault();
+    componentDidMount(){
+       // e.preventDefault();
         let UserID =sessionStorage.getItem("UserID");
       axios.get('http://localhost:27853/api/Manager/EmployeeMangerDetails/'+UserID).then(response=>
         {
@@ -38,6 +39,7 @@ export default class ManagerDetails extends Component {
                 mng_Mobile:response.data.mng_Mobile,
          
             })
+          // sessionStorage.setItem("mngid",mng_Id)
         }).catch(error=>{console.warn(error);})
     }
 
@@ -49,6 +51,7 @@ export default class ManagerDetails extends Component {
         const{mng_Name}=this.state;
         const{mng_Email}=this.state;
         const{mng_Mobile}=this.state;
+       // sessionStorage.setItem("MNGID",mng_Id);
         
         return (
             <div>
@@ -60,12 +63,15 @@ export default class ManagerDetails extends Component {
             </div>
             {/* <input type="text"  name="emp_Id" onChange={(e)=>this.setState({emp_Id:e.target.value})}>
             </input> */}
-             <button className="btn" onClick={(e)=>this.searchbyid(e)}>SHOW</button>
+             {/* <button className="btn" onClick={(e)=>this.searchbyid(e)}>SHOW</button> */}
             </div>
             {/* <button onClick={(e)=>this.searchbyid(e)}>Search</button></div> */}
             <br/><br/>
-            <table className="table" border="1" align="center" >
-                <tr className="table-primary">
+            {/* <table className="table" border="1" align="center" >
+                <tr className="table-primary"> */}
+                <MDBTable>
+       <MDBTableHead>
+       <tr className="table-primary"> 
                     <th>mng_Id</th>
                     {/* <th>employeeId</th> */}
                     <th>mng_Name</th>
@@ -73,6 +79,8 @@ export default class ManagerDetails extends Component {
                     <th>mng_Mobile</th>
                    
                 </tr>
+                </MDBTableHead>
+           <MDBTableBody>
                 <tr>
                 <td>{mng_Id}</td>
                 {/* <td>{employeeId}</td> */}
@@ -81,9 +89,11 @@ export default class ManagerDetails extends Component {
                 <td>{mng_Mobile}</td>
 
                 </tr>
-            </table><br/><br/>
+                </MDBTableBody>
+           </MDBTable>
+            {/* </table><br/><br/> */}
             <div>
-                <Link to={'/Dashboard'}><button>Back</button></Link>
+                <Link to={'/Dashboard'}><button className="btn">Back</button></Link>
             </div>
             </div>
         )

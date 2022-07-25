@@ -13,7 +13,7 @@ export default class Approval_deny extends Component  {
         }
         this.handlechange=this.handlechange.bind(this);
 
-        this.searchbyid=this.searchbyid.bind(this)
+      //  this.searchbyid=this.searchbyid.bind(this)
     }
     // Update_leave_status(e){
     //     e.preventDefault();  
@@ -41,8 +41,8 @@ export default class Approval_deny extends Component  {
     handlechange(object){
         this.setState(object);
     }
-    searchbyid(e){
-        e.preventDefault();
+    componentDidMount(){
+       // e.preventDefault();
         let UserID =sessionStorage.getItem("UserID");
         axios.get('http://localhost:27853/api/ApplyLeave/Mng_Leaves/'+UserID).then(response=>
         {
@@ -102,7 +102,7 @@ export default class Approval_deny extends Component  {
        </div>
        {/* <input type="text"  name="emp_Id" onChange={(e)=>this.setState({emp_Id:e.target.value})}>
        </input> */}
-        <button className="btn" onClick={(e)=>this.searchbyid(e)}>show leaves</button>
+        {/* <button className="btn" onClick={(e)=>this.searchbyid(e)}>show leaves</button> */}
         <input  className="input"  type="text" placeholder="LeaveId"
              onChange={(e)=>this.handlechange({leave_Id:e.target.value})}/>
         <button className="btn" onClick={(e)=>this.Update_approve(e)}>Approve</button>

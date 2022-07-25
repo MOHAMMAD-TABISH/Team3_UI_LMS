@@ -12,14 +12,15 @@ export default class Apply_leave extends Component {
             
          //   "leaveId: "",
             "noOfDays": "",
-            "startDate": "",
-            "endDate": "",
+            "startDate": new Date().toISOString().slice(0,10),
+            "endDate": new Date().toISOString().slice(0,10),
             "leaveType": "",
             "leaveStatus": "",
             "leaveReason": "",
-            "appliedOn": "",
+            "appliedOn":new Date().toISOString().slice(0,10),
             "mng_Comments": "",
-            "emp_Id": ''
+            "emp_Id": '',
+            "mng_Id":''
         }
         const token=localStorage.getItem("token")
         let loggedIn=true
@@ -37,7 +38,8 @@ export default class Apply_leave extends Component {
     }
     
     CreateNewApplyLeave()
-    {   let UserID =sessionStorage.getItem("UserID");
+    {   // let MNGID =sessionStorage.getItem("MNGID");
+        let UserID =sessionStorage.getItem("UserID");
         axios.post('http://localhost:27853/api/ApplyLeave/Leave',{
             "leaveId": 0,
             "noOfDays":this.state.noOfDays,
@@ -48,7 +50,9 @@ export default class Apply_leave extends Component {
             "leaveReason":this.state. leaveReason,
             "appliedOn":this.state.appliedOn,
             "mng_Comments":"Pending",
-            "emp_Id":UserID
+            "mng_Id":this.state.mng_Id,
+            "emp_Id":UserID,
+            //"mng_Id":MNGID
     //         noOfDays:this.state.noOfDays,
     // startDate:this.state.startDate,
     // endDate:this.state.endDate,
@@ -70,7 +74,7 @@ export default class Apply_leave extends Component {
    
     render() {
         if(this.state.loggedIn==false){
-            return<Navigate to="/Admin_Login"/>
+            return<Navigate to="/sign-in"/>
          }
         return (<>
         <div>
@@ -88,12 +92,16 @@ export default class Apply_leave extends Component {
             </div>
             </tr>
             <div>
+            <label className="label"> AppliedOn: </label>
+            <input  className="input"  type="datetime-local" placeholder="AppliedOn"  value={this.state.appliedOn} max={this.state.startDate}
+             onChange={(e)=>this.handlechange({appliedOn:e.target.value})}/><br/>
+
             <label className="label"> StartDate: </label>
-            <input  className="input"  type="datetime-local" placeholder="StartDate"
+            <input  className="input"  type="datetime-local" placeholder="StartDate" value={this.state.startDate} max={this.state.endDate} min={this.state.appliedOn}
             onChange={(e)=>this.handlechange({startDate:e.target.value})}/>
             </div><div>
             <label className="label"> EndDate: </label>
-            <input  className="input"  type="datetime-local" placeholder="EndDate"
+            <input  className="input"  type="datetime-local" placeholder="EndDate" value={this.state.endDate} min={this.state.startDate}
             onChange={(e)=>this.handlechange({endDate:e.target.value})}/>
             </div>
             <div>
@@ -114,12 +122,12 @@ export default class Apply_leave extends Component {
             <input  className="input"  type="comment" placeholder="Reason"
              onChange={(e)=>this.handlechange({leaveReason:e.target.value})}/>
             <br/>
-            <label className="label"> AppliedOn: </label>
+            {/* <label className="label"> AppliedOn: </label>
             <input  className="input"  type="datetime-local" placeholder="AppliedOn"
-             onChange={(e)=>this.handlechange({appliedOn:e.target.value})}/><br/>
-            {/* <label className="label"> Mng-Comments: </label>
+             onChange={(e)=>this.handlechange({appliedOn:e.target.value})}/><br/> */}
+            {/* <label className="label"> Manager Id </label>
             <input  className="input"  type="text" placeholder="Mng_Comments"
-            onChange={(e)=>this.handlechange({mng_Comments:e.target.value})}/> */}
+            onChange={(e)=>this.handlechange({mng_Id:e.target.value})}/>  */}
              {/* <tr>
             <label className="label"> Emp_Id: </label>
             <input  className="input"  type="text"
